@@ -1,0 +1,31 @@
+\makeatletter\def\@maketitle{\centering{\usekomafont{title}{\huge \@title\par}\vskip .3em{\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi}\vskip .7em}}\makeatother
+\RedeclareSectionCommands[beforeskip=-.35\baselineskip, afterskip=.15\baselineskip]{section,subsection}
+\RedeclareSectionCommands[beforeskip=0\baselineskip, afterskip=0\baselineskip, afterskip=-1.25ex]{subsubsection}
+\addtokomafont{section}{\centering}
+\renewcommand{\caption}[1]{\vspace{-2em}}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+ % Those are the "official" AU color, but we are assuming black-and-white printing.
+\definecolor{augustablue}{HTML}{002f55}
+\definecolor{augustagrey}{HTML}{A5ACAF}
+% Colored links, with underline, cf. https://tex.stackexchange.com/questions/26071/how-can-i-have-colored-and-underlined-links-with-hyperref
+\hypersetup{colorlinks=true,
+            allcolors=augustablue,
+            linkbordercolor=augustagrey,
+            }
+
+\makeatletter
+\Hy@AtBeginDocument{%
+  \def\@pdfborder{0 0 0}% Overrides border definition set with colorlinks=true
+  \def\@pdfborderstyle{/S/U/W 1}% Overrides border style set with colorlinks=true
+                                % Hyperlink border style will be underline of width 1pt
+}
+\makeatother
+
+\makeatletter
+\renewenvironment{description}%
+               {\list{}{\leftmargin=10pt % <------- Adjust this length
+                        \labelwidth\z@ \itemindent-\leftmargin
+                        \let\makelabel\descriptionlabel}}%
+               {\endlist}
+\makeatother
