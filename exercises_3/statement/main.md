@@ -43,7 +43,7 @@ Writing $⇝$ the backward transition, a "forward-reverse simulation" [@Lanese2
 - for all $X'$, $\alpha$, $m$ if $X \to^{\alpha[m]} X'$, then there exists $Y'$ such that $Y \to^{\alpha[m]} Y'$ and $X' \mathcal{R} Y'$,
 - for all $X'$, $\alpha$, $m$ if $X ⇝^{\alpha[m]} X'$, then there exists $Y'$ such that $Y ⇝^{\alpha[m]} Y'$ and $X' \mathcal{R} Y'$.
 
-From theere, the forward-reverse _bi_simulation is defined as usual.
+From there, the forward-reverse _bi_simulation is defined as usual.
 
 We similarly write that $X$ and $Y$ _are_ bisimilar if there exists a forward-reverse bisimulation between them.
 
