@@ -6,7 +6,7 @@ title: "Exercises - 0"
 
 The current workflow uses:
 
-- Pandoc (<https://pandoc.org/installing.html>),
+- Pandoc (<https://pandoc.org/installing.html>, v. 3.0.1),
 - \LaTeX (or, actually, xelatex) (<https://www.latex-project.org/get/>),
 - makefiles (that are native to Unix systems, but can be ported in windows using [Cygwin](https://cygwin.com/install.html))
 
@@ -40,7 +40,7 @@ Where
     that means:
     
     - Tell pandoc to process main.md (the `$<` parameter, which denotes in makefile the source we need to construct what we are constructing),
-    - using XeLaTeX xelatex as the pdf engine,
+    - using XeLaTeX as the pdf engine,
     - using info.md for the metadatas,
     - using citeproc (which is a filter that process the bibliographical references),
     - setting the date to be the value returned by the command `date "+%B %e, %Y"` (so, the current date, formatted nicely),
