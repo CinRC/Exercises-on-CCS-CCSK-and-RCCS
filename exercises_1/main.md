@@ -48,7 +48,15 @@ Exemples:
     - A process $\overline{a} . 0 + \overline{b}.0$ could represent access to a shared document: a user could log-in on $a$ to edit the document only provided nobody logged-in on $b$, and reciprocally. 
     The process can accept a connexion on $a$ or on $b$, but cannot accept both.
     - A process $((\overline{a}.0 | a.P) | a.Q) \backslash a$ represent a situation where either $a.P$ or $a.Q$ could send a message to $\overline{a}$ and synchronize with it, but nobody else could, as the channel name $a$ is restricted.
-    - A process $A \overset{\underset{\mathrm{def}}{}}{=} \overline{a} . b . A$ is an infinite forwarder: it receives a message on $a$, send it back on $b$, and then wait for a message on $a$ again.
+    - A process $A \overset{\underset{\mathrm{def}}{}}{=} \overline{a} . b . A$ could represent an infinite forwarder: it receives a message on $a$, send it back on $b$, and then wait for a message on $a$ to forward on $b$ again and again.
+
+Exercise:
+~ Write a high-level explanation of the situation represented by the process $$((a.P_1.\overline{b}.P_2 | b.Q_1.Q_2) \backslash b) + ((a.Q_1.\overline{c}.Q_2 | c.P_1.P_2) \backslash c)$$ taking inspiration from the following questions:
+
+    - Can $b.Q_1.Q_2$ receive a message on $b$ from any other process than $a.P_1.\overline{b}.P_2$?
+    - Can $P_1$ and $Q_1$ execute at the same time?
+    - Can $P_2$ and $Q_1$ execute at the same time?
+    - Can $Q_1$ execute twice?
 
 Exercise:
 ~ Usually, we simplify the notation by assuming some convention [@Degano2003]. We do not write "trailing $0$", so that $a.0$ is the same as $a$, and:
@@ -57,7 +65,8 @@ Exercise:
     
     Explain the meaning of this (slightly modified) quote, and write down the parenthesised version of a couple of terms without parenthesises.
     For instance, is $a + b | c$ the same as $(a + b) | c$, or the same as $a + (b | c)$? Is $A + a . a | b + c$ the same as $A + ((a.a)|(b+c))$, or is it something else entirely?
-    
+
+
 ## Semantics
 
 The processes are then given a _semantics_ (a way of _reducing_, of being executed) thanks to a labeled transition system (LTS), given in \autoref{fig:semantics}.
