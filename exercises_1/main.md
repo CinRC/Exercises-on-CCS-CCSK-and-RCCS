@@ -4,21 +4,20 @@ title: "Exercises - 1"
 
 # Forward-Only CCS
 
-## Syntax
+The interest and history of the Calculus of Communicating Systems (CCS) is given e.g. at <https://en.wikipedia.org/wiki/Calculus_of_communicating_systems>.
 
-The syntax of the Calculus of Communicating Systems (CCS) is given e.g. at <https://en.wikipedia.org/wiki/Calculus_of_communicating_systems#Syntax>.
-We summarize it below.
+## Syntax
 
 (Co-)names and labels
 ~ 
     Let $\mathsf{N}=\{a,b,c,\dots\}$ be a set of \emph{names} and $\overline{\mathsf{N}}=\{\overline{a},\overline{b},\overline{c},\dots\}$ its set of \emph{co-names}.
-	The set of \emph{labels} $\mathsf{L}$ is $\mathsf{N} \cup \overline{\mathsf{N}} \cup\{\tau\}$, and we use $\alpha$, $\beta$ (resp.  $\lambda$) to range over $\mathsf{L}$ (resp.  $\mathsf{L} \backslash \{\tau\}$).
-	A bijection $\overline{\cdot}:\mathsf{N} \to \overline{\mathsf{N}}$, whose inverse is also written $\overline{\cdot}$, 
-	gives the \emph{complement} of a name.
+	The set of \emph{channels} $\mathsf{C}$ is $\mathsf{N} \cup \overline{\mathsf{N}}$, the set of \emph{labels} $\mathsf{L}$ is $\mathsf{N} \cup \overline{\mathsf{N}} \cup\{\tau\}$, and we use $\alpha$, $\beta$ (resp.  $\lambda$) to range over $\mathsf{L}$ (resp.  $\mathsf{C}$).
+	A bijection $\overline{\cdot}:\mathsf{C} \to \overline{\mathsf{C}}$, whose inverse is also written $\overline{\cdot}$, gives the \emph{complement} of a channel.
 	
-The intuition is that a channel (which can be a name or a co-name) represents a port, a slot, a button, a switch….
-A name represents the action of sending an input along that channel, and a co-name represents the action of receiving an input along that channel.
+The intuition is that a channel represents a port, a slot, a button, a switch, an action….
+A name represents the action of *sending an output* along that channel, and a co-name represents the action of *receiving an input* along that channel (or the other way around: it does not change much since $\overline{\cdot}$ is an involution).
 Names and co-names are *complement* because receiving an input on $\overline{a}$ suppose that a message was output on $a$.
+When such a _synchronization_ happen, the symbol $\tau$ is used to represent a silent action, something that cannot be seen by the rest of the world.
 
 CCS is not interested with the content of the messages that are exchanged: they are treated as black boxes.
 It only cares about the possibility of *processes* (read: computers, threads, agents, …) interacting.
@@ -38,6 +37,18 @@ meaning that
 - $A \overset{\underset{\mathrm{def}}{}}{=} P$  uses the identifier $A$ to refer to the process $P$ (which may contain the identifier $A$).
 
 This recursive definition, along with replication and recursion, is one of the mechanism in CCS used to represent infinite behaviours.
+
+Exemples:
+~ Here are some high-level examples:
+    
+    - A process $\overline{a} . b.0$ could represent a system that expect a message on port $a$, send a message on port $b$, and then terminate.
+    If the message is transferred without being changed, this process represents a forwarder.
+    - A process $(\overline{a} . a . 0) | b.0$ could represent a server that expects a ssh connexion on port $a$ (if the connexion is successful, it would send a message on port $a$) and _in parallel_ wait for printing instructions on port $b$.
+    This means that the server can do both actions _at the same time_, and in any order: it could first receive the ssh connexion, then receive printing instructions, and finally send the success message.
+    - A process $\overline{a} . 0 + \overline{b}.0$ could represent access to a shared document: a user could log-in on $a$ to edit the document only provided nobody logged-in on $b$, and reciprocally. 
+    The process can accept a connexion on $a$ or on $b$, but cannot accept both.
+    - A process $((\overline{a}.0 | a.P) | a.Q) \backslash a$ represent a situation where either $a.P$ or $a.Q$ could send a message to $\overline{a}$ and synchronize with it, but nobody else could, as the channel name $a$ is restricted.
+    - A process $A \overset{\underset{\mathrm{def}}{}}{=} \overline{a} . b . A$ is an infinite forwarder: it receives a message on $a$, send it back on $b$, and then wait for a message on $a$ again.
 
 Exercise:
 ~ Usually, we simplify the notation by assuming some convention [@Degano2003]. We do not write "trailing $0$", so that $a.0$ is the same as $a$, and:
@@ -79,7 +90,13 @@ Exercise:
 
 # Vending Machine
 
-Next page is presented the "canonical example" from [@Milner1989, p. 23] (note that the $V$ at the right of the equation are here to trigger recursion).
+In \autoref{fig:vm} is presented the "canonical example" from [@Milner1989, p. 23] (note that the $V$ at the right of the equation are here to trigger recursion).
+
+Exercises:
+~ Solve the two exercises, and then consider the following vending machine:
+    $$V_{\text{bad}} \overset{\underset{\mathrm{def}}{}}{=} 2\text{p}.(\text{big}.\text{collect}.V_{\text{bad}} + \text{little}.\text{collect}.\text{little}.\text{collect}.V_{\text{bad}})$$
+    
+    Most people would consider this vending machine as bad: can you explain why?
 
 ![The vending machine example\label{fig:vm}](img/vending.png)
 
