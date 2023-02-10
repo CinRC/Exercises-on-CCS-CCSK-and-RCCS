@@ -2,7 +2,7 @@
 title: "Exercises - 1"
 ---
 
-# Forward-Only CCS
+# (Forward-Only) Calculus of Communicating Systems (CCS)
 
 The interest and history of the Calculus of Communicating Systems (CCS) is given e.g. at <https://en.wikipedia.org/wiki/Calculus_of_communicating_systems>.
 
@@ -10,9 +10,9 @@ The interest and history of the Calculus of Communicating Systems (CCS) is given
 
 (Co-)names and labels
 ~ 
-    Let $\mathsf{N}=\{a,b,c,\dots\}$ be a set of \emph{names} and $\overline{\mathsf{N}}=\{\overline{a},\overline{b},\overline{c},\dots\}$ its set of \emph{co-names}.
-	The set of \emph{channels} $\mathsf{C}$ is $\mathsf{N} \cup \overline{\mathsf{N}}$, the set of \emph{labels} $\mathsf{L}$ is $\mathsf{N} \cup \overline{\mathsf{N}} \cup\{\tau\}$, and we use $\alpha$, $\beta$ (resp.  $\lambda$) to range over $\mathsf{L}$ (resp.  $\mathsf{C}$).
-	A bijection $\overline{\cdot}:\mathsf{C} \to \overline{\mathsf{C}}$, whose inverse is also written $\overline{\cdot}$, gives the \emph{complement} of a channel.
+    Let $\mathsf{N}=\{a,b,c,\dots\}$ be a set of *names* and $\overline{\mathsf{N}}=\{\overline{a},\overline{b},\overline{c},\dots\}$ its set of \emph{co-names}.
+	The set of \emph{channels} $\mathsf{C}$ is $\mathsf{N} \cup \overline{\mathsf{N}}$, the set of *labels* $\mathsf{L}$ is $\mathsf{N} \cup \overline{\mathsf{N}} \cup\{\tau\}$, and we use $\alpha$, $\beta$ (resp.  $\lambda$) to range over $\mathsf{L}$ (resp.  $\mathsf{C}$).
+	A bijection $\overline{\cdot}:\mathsf{C} \to \overline{\mathsf{C}}$, whose inverse is also written $\overline{\cdot}$, gives the *complement* of a channel.
 	
 The intuition is that a channel represents a port, a slot, a button, a switch, an action….
 A name represents the action of *sending an output* along that channel, and a co-name represents the action of *receiving an input* along that channel (or the other way around: it does not change much since $\overline{\cdot}$ is an involution).
@@ -80,8 +80,19 @@ In this case, we can (almost!) construct it:
 - as a consequence, $a.P + Q$ can use the $+_{\text{L}}$ rule to become $P$,
 - as a consequence, and since $b \notin \{a, \overline{a}\}$,  $a.P + Q \backslash b$ (which is the same as $(a.P + Q)\backslash b$) can use the res.\ rule to become … $P \backslash b$.
 
-Summarizing, $a.P + Q \backslash b \xrightarrow{a} P \backslash b$, which means that $a.P + Q \backslash b$ can become $P$ once it received a message on $a$.
+Summarizing, $a.P + Q \backslash b \xrightarrow{a} P \backslash b$, which means that $a.P + Q \backslash b$ can become $P \backslash b$ once it received a message on $a$.
 Note that if we had $a = b$, then the process $a.P$ would be stuck: to make progress, it would have te receive a message on $a$ "from the outside world", but this is not possible because of the restriction: this is what the side condition in the res.\ rule guarantee.
+
+Exemples:
+~ Note that a process $a | \overline{a}$ can either
+
+	- Perform $a$, then $\overline{a}$,
+	- Perform $\overline{a}$, then $a$,
+	- Perform $\tau$, which corresponds to a synchronization.
+
+	In short, it means that the process $a | \overline{a}$ can either communicate with the outside world, or "keep it between then".
+	Note that the process $(a | \overline{a}) \backslash a$ can only perform the $\tau$ transition.
+
 
 Exercise:
 ~ In forward-only CCS, list all the different reductions that $c.(\overline{a} | (b. a | d ))$ can perform to reach $0 | (0 | 0)$.
