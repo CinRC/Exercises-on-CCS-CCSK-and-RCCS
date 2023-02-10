@@ -10,8 +10,8 @@ The interest and history of the Calculus of Communicating Systems (CCS) is given
 
 (Co-)names and labels
 ~ 
-    Let $\mathsf{N}=\{a,b,c,\dots\}$ be a set of *names* and $\overline{\mathsf{N}}=\{\overline{a},\overline{b},\overline{c},\dots\}$ its set of \emph{co-names}.
-	The set of \emph{channels} $\mathsf{C}$ is $\mathsf{N} \cup \overline{\mathsf{N}}$, the set of *labels* $\mathsf{L}$ is $\mathsf{N} \cup \overline{\mathsf{N}} \cup\{\tau\}$, and we use $\alpha$, $\beta$ (resp.  $\lambda$) to range over $\mathsf{L}$ (resp.  $\mathsf{C}$).
+    Let $\mathsf{N}=\{a,b,c,\dots\}$ be a set of *names* and $\overline{\mathsf{N}}=\{\overline{a},\overline{b},\overline{c},\dots\}$ its set of *co-names*.
+	The set of *channels* $\mathsf{C}$ is $\mathsf{N} \cup \overline{\mathsf{N}}$, the set of *labels* $\mathsf{L}$ is $\mathsf{N} \cup \overline{\mathsf{N}} \cup\{\tau\}$, and we use $\alpha$, $\beta$ (resp.  $\lambda$) to range over $\mathsf{L}$ (resp.  $\mathsf{C}$).
 	A bijection $\overline{\cdot}:\mathsf{C} \to \overline{\mathsf{C}}$, whose inverse is also written $\overline{\cdot}$, gives the *complement* of a channel.
 	
 The intuition is that a channel represents a port, a slot, a button, a switch, an action….
