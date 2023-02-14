@@ -8,7 +8,7 @@ title: "Exercises - 2"
 
 Processes in CSSk are exactly the same as CCS processes, with three exceptions:
 
-- They are denoted by $X$, $Y$ (this is just a convention),
+- They are denoted by $X$, $Y$ instead of $P$, $Q$ (this is just a convention, and we will keep on using $P$ and $Q$ to denote CCS processes),
 - They can contain "keyed prefixes" $\alpha[k].X$, which represent "past actions",
 - They generally do not include operators to represent infinite behaviours such as recursion, replication or iteration.
 
@@ -21,9 +21,9 @@ Standard and reachable processes:
 
 	The set of keys occurring in $X$, $\text{key}(X)$, is defined inductively:
 	\begin{align*}
-		\text{key}(0) & = \emptyset  &&& \text{key}(P + Q) &= \text{key}(P) \cup \text{key}(Q) \\
-		\text{key}(\alpha.P) & = \text{key}(P) &&& \text{key}(P | Q) &= \text{key}(P) \cup \text{key}(Q) \\
-		\text{key}(\alpha[k].P) & = \{k\} \cup \text{key}(P) 
+		\text{key}(0) & = \emptyset  &&& \text{key}(X + Y) &= \text{key}(X) \cup \text{key}(Y) \\
+		\text{key}(\alpha.X) & = \text{key}(X) &&& \text{key}(X | Y) &= \text{key}(X) \cup \text{key}(Y) \\
+		\text{key}(\alpha[k].X) & = \{k\} \cup \text{key}(X) 
 	\end{align*}
 	We say that $X$ is _standard_ and write $\text{std}(X)$ iff $\text{key}(X) = \emptyset$---that is, if $X$ is a CCS process.
 
