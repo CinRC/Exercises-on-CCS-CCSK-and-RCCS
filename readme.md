@@ -1,4 +1,4 @@
-# A collection of small exercises about CSS and its reversible declensions  
+# A collection of exercises about CSS and its reversible declensions  
 
 Most of the documents below can be pre-viewed in github directly, by simply opening the "main.md" file.
 However, due to the limitations of github's markdown, it is recommended to refer to the pdf documents, also included.
