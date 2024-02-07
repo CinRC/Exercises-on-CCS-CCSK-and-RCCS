@@ -6,7 +6,7 @@ title: "Exercises - 0"
 
 The current workflow uses:
 
-- Pandoc (<https://pandoc.org/installing.html>, v. 3.0.1),
+- Pandoc (<https://pandoc.org/installing.html>, v. 3.1.11.1),
 - \LaTeX (or, actually, xelatex) (<https://www.latex-project.org/get/>),
 - makefiles (that are native to Unix systems, but can be ported in windows using [Cygwin](https://cygwin.com/install.html))
 
@@ -14,7 +14,7 @@ The typical file hierarchy is:
 
 ```
 ├── bib
-│   └── bib.bib
+│   └── bib.bib
 ├── img
 ├── info.md
 ├── main.md
@@ -51,3 +51,13 @@ Where
 - `templates/theoretical-computer-science.csl` is the [Citation Style Language](https://citationstyles.org/) file, that explains how references should be displayed. Since this is very field-sensitive, many different formatting exist, and we pick the one for theoretical computer science.
 
 If you install [entr](https://github.com/eradman/entr), you can also use `make watch` that will automatically re-compile `main.md` into `main.pdf` whenever `main.md` is modified (that is, edited and saved).
+
+**Important**: Note that this details the organization of _the current folder_ (exercises_0) but that the overall repository is organized a bit differently, to avoid duplicating the bib and template files.
+
+# Examples
+
+Here is a reference [@Aubert2019], and here is an image, courtesy of [Jérôme Minard](http://jeromeminard.com/projects/monde-miroir/):
+
+![](img/monde_miroir.jpg)
+
+# References
