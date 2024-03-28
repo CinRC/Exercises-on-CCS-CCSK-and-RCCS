@@ -23,6 +23,10 @@ Some notes about the purpose and benefits of (bi)simulations for CSS and CSSK.
 
 Some rapid notes introducing λ-calculus.
 
+## Some Notes About Reversibility
+
+Some brief notes about the benefits and usage of reversible computation.
+
 # License
 
-This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, refer to the license.md file, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+This work is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, refer to the [license.md](license.md) file, visit <http://creativecommons.org/licenses/by/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
