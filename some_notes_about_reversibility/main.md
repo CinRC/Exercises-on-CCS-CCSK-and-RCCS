@@ -27,6 +27,6 @@ If that same program is written using a _reversible_ programming language, then
 - extracting means executing it backward,
 - that compressing then extracting is the identity comes for free!
 
-Another example is [pandoc](https://pandoc.org/).
+Another example is [pandoc](https://pandoc.org/), or, actually, any program that performs lossless compression (frow `wav` to `flac`, but also in cryptography).
 
 # References
