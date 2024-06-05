@@ -4,12 +4,7 @@ title: "Some Notes About Reversibility"
 
 Abstract:
 ~ 
-    Computers users in general know the difference between what can be undone on a computer, and what cannot.
-    They may be familiar with the "undo" feature of text editors, or the impossibility of recovering a temporary file after the computer has been shutdown.
-    Creating programs guaranteeing that anything can be undone requires to design and implement reversible programming languages.
-    While such languages come with interesting built-in security features (for instance, any past action can be examined), they also raise challenges when it comes to concurrency.
-    Indeed, undoing an action that involved synchronization between multiple actors requires all actors to agree to undo said action.
-    This talk offers to discuss current trends in solving the aforementioned problem, and to highlight some of the benefits that could result from well-designed concurrent and reversible programming languages.
+    A typical computer user knows the difference between what can be undone on a computer, and what cannot. They may be familiar with the "undo" feature of text editors but understand the impossibility of recovering an unsaved document after an emergency shutdown. Creating programs guaranteeing that any action can be undone requires to design and implement reversible programming languages. While such languages come with interesting built-in security features (because any past action can be investigated), they also raise challenges when it comes to concurrency. Indeed, undoing an action that involved synchronization between multiple actors requires all actors to agree to undo said action. This talk offers to discuss current trends in solving the aforementioned problem, and to highlight some of the benefits that could result from well-designed concurrent and reversible programming languages. 
    
    
 
