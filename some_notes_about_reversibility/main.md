@@ -6,8 +6,17 @@ Abstract:
 ~ 
     A typical computer user knows the difference between what can be undone on a computer, and what cannot. They may be familiar with the "undo" feature of text editors but understand the impossibility of recovering an unsaved document after an emergency shutdown. Creating programs guaranteeing that any action can be undone requires to design and implement reversible programming languages. While such languages come with interesting built-in security features (because any past action can be investigated), they also raise challenges when it comes to concurrency. Indeed, undoing an action that involved synchronization between multiple actors requires all actors to agree to undo said action. This talk offers to discuss current trends in solving the aforementioned problem, and to highlight some of the benefits that could result from well-designed concurrent and reversible programming languages. 
    
+Note:
+~ 
+    Those notes have started as an outline for a talk given at the [Meeting on Foundations of Security and Concurrency at The Norwegian Academy of Science and Letters](https://secureconcur.academy/) in July 2024.
+
+
 
 # Intro
+
+
+Reversible computing is gaining a lot of traction as a debugging and forensic tool, but also due to its connections to quantum and adiabatic computing [@Aman2020].
+We also know since the 70's and _Bennett's trick_ that it is possible to "revert" any Turing Machine, in a precise technical sense [@Gluck2023].
 
 A computer generally transforms an _input_ into an _output_:
 
