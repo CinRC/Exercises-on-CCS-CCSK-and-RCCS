@@ -32,7 +32,7 @@ meaning that
 - $\alpha.P$ is the process that can send (or receive) along $\alpha$ and then continue as $P$,
 - $P + Q$ is a process that can act as $P$ (exclusive) or as $Q$,
 - $P | Q$ is the process that results from setting in parallel $P$ and $Q$,
-- $P[\alpha/\beta]$ is the process that results from replacing every occurrence of $\alpha$ by $\beta$ in $P$,
+- $P[\alpha/\beta]$ is the process that results from replacing every occurrence of $\beta$ by $\alpha$ in $P$,
 - $P \backslash \lambda$ is the process $P$ where the channel $\lambda$ is kept private (that is, it can use it only to exchange messages internally),
 - $A \overset{\underset{\mathrm{def}}{}}{=} P$  uses the identifier $A$ to refer to the process $P$ (which may contain the identifier $A$).
 
@@ -41,19 +41,19 @@ This recursive definition, along with replication and recursion, is one of the m
 Exemples:
 ~ Here are some high-level examples:
     
-    - A process $\overline{a} . b.0$ could represent a system that expect a message on port $a$, send a message on port $b$, and then terminate.
+    - A process $\overline{a} . b.0$ could represent a system that expects a message on port $a$, sends a message on port $b$, and then terminates.
     If the message is transferred without being changed, this process represents a forwarder.
-    - A process $(\overline{a} . a . 0) | b.0$ could represent a server that expects a ssh connexion on port $a$ (if the connexion is successful, it would send a message on port $a$) and _in parallel_ wait for printing instructions on port $b$.
+    - A process $(\overline{a} . a . 0) | b.0$ could represent a server that expects a ssh connexion on port $a$ (if the connexion is successful, it would send a message on port $a$) and _in parallel_ waits for printing instructions on port $b$.
     This means that the server can do both actions _at the same time_, and in any order: it could first receive the ssh connexion, then receive printing instructions, and finally send the success message.
     - A process $\overline{a} . 0 + \overline{b}.0$ could represent access to a shared document: a user could log-in on $a$ to edit the document only provided nobody logged-in on $b$, and reciprocally. 
     The process can accept a connexion on $a$ or on $b$, but cannot accept both.
-    - A process $((\overline{a}.0 | a.P) | a.Q) \backslash a$ represent a situation where either $a.P$ or $a.Q$ could send a message to $\overline{a}$ and synchronize with it, but nobody else could, as the channel name $a$ is restricted.
-    - A process $A \overset{\underset{\mathrm{def}}{}}{=} \overline{a} . b . A$ could represent an infinite forwarder: it receives a message on $a$, send it back on $b$, and then wait for a message on $a$ to forward on $b$ again and again.
+    - A process $((\overline{a}.0 | a.P) | a.Q) \backslash a$ represents a situation where either $a.P$ or $a.Q$ could send a message to $\overline{a}$ and synchronize with it, but nobody else could, as the channel name $a$ is restricted.
+    - A process $A \overset{\underset{\mathrm{def}}{}}{=} \overline{a} . b . A$ could represent an infinite forwarder: it receives a message on $a$, sends it back on $b$, and then waits for a message on $a$ to forward on $b$ again and again.
 
 Exercise:
-~ Write a high-level explanation of the situation represented by the process $$((a.P_1.\overline{b}.P_2 | b.Q_1.Q_2) \backslash b) + ((a.Q_1.\overline{c}.Q_2 | c.P_1.P_2) \backslash c)$$ taking inspiration from the following questions:
+~ Write a high-level explanation of the situation represented by the process $$((a.P_1.\overline{b}.P_2 | b.Q_1.Q_2) \backslash b) + ((a.Q_1.\overline{c}.Q_2 | c.P_1.P_2) \backslash c),$$ where $b$ and $c$ do not occur free in $P_1$ and $Q_1$ respectively, taking inspiration from the following questions:
 
-    - Can $b.Q_1.Q_2$ receive a message on $b$ from any other process than $a.P_1.\overline{b}.P_2$?
+    - Can $b.Q_1.Q_2$ send a message through $b$ to any other process than $a.P_1.\overline{b}.P_2$?
     - Can $P_1$ and $Q_1$ execute at the same time?
     - Can $P_2$ and $Q_1$ execute at the same time?
     - Can $Q_1$ execute twice?
@@ -63,7 +63,7 @@ Exercise:
 
     > We assume that the operators have decreasing binding power, in the following order: $\backslash \alpha, \alpha., |, +$.
     
-    Explain the meaning of this (slightly modified) quote, and write down the parenthesised version of a couple of terms without parenthesises.
+    Explain the meaning of this (slightly modified) quote, and write down the parenthesised version of a couple of terms without parentheses.
     For instance, is $a + b | c$ the same as $(a + b) | c$, or the same as $a + (b | c)$? Is $A + a . a | b + c$ the same as $A + ((a.a)|(b+c))$, or is it something else entirely?
 
 
@@ -73,14 +73,14 @@ The processes are then given a _semantics_ (a way of _reducing_, of being execut
 
 ![LTS for CCS\label{fig:semantics}](img/semantics.png)
 
-This means that to decide, for instance, if $a.P + Q \backslash b$ can become $P$, we have to find a _derivation_ using those rules.
+This means that to decide, for instance, if $(a.P + Q) \backslash b$ can become $P$, we have to find a _derivation_ using those rules.
 In this case, we can (almost!) construct it:
 
 - $a.P$ can use the act.\ rule to become $P$,
 - as a consequence, $a.P + Q$ can use the $+_{\text{L}}$ rule to become $P$,
-- as a consequence, and since $b \notin \{a, \overline{a}\}$,  $a.P + Q \backslash b$ (which is the same as $(a.P + Q)\backslash b$) can use the res.\ rule to become … $P \backslash b$.
+- as a consequence, and since $b \notin \{a, \overline{a}\}$,  $(a.P + Q) \backslash b$ can use the res.\ rule to become … $P \backslash b$.
 
-Summarizing, $a.P + Q \backslash b \xrightarrow{a} P \backslash b$, which means that $a.P + Q \backslash b$ can become $P \backslash b$ once it received a message on $a$.
+Summarizing, $(a.P + Q) \backslash b \xrightarrow{a} P \backslash b$, which means that $(a.P + Q) \backslash b$ can become $P \backslash b$ once it received a message on $a$.
 Note that if we had $a = b$, then the process $a.P$ would be stuck: to make progress, it would have te receive a message on $a$ "from the outside world", but this is not possible because of the restriction: this is what the side condition in the res.\ rule guarantee.
 
 Exemples:
@@ -90,7 +90,7 @@ Exemples:
 	- Perform $\overline{a}$, then $a$,
 	- Perform $\tau$, which corresponds to a synchronization.
 
-	In short, it means that the process $a | \overline{a}$ can either communicate with the outside world, or "keep it between then".
+	In short, it means that the process $a | \overline{a}$ can either communicate with the outside world, or "keep it between them".
 	Note that the process $(a | \overline{a}) \backslash a$ can only perform the $\tau$ transition.
 
 
