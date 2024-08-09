@@ -69,6 +69,8 @@ Exercise:
     - $a[k].b | \overline{b}$
     - $(b[k].\overline{c} + a) | (c + \overline{b})$
     - $(a[k].c[k']) | (\overline{a}[k] . d)$
+    - $a[k].c | b[k'].\overline{c}$
+    - $a[k].b[k'].0 | \overline{b}[k'].c[k''].d$
     
 Exercise:
 ~ Looking back at the vending machine example from the previous exercise sheet, explain intuitively why $1p.1p.big.collect.V + 1p.little.collect.V$ could be an ok way of answering exercise 4 in a reversible system, and why this process would not fulfill the requirement of exercise 4 in a non-reversible set-up.
