@@ -9,6 +9,9 @@ The current workflow uses:
 - Pandoc (<https://pandoc.org/installing.html>, v. 3.1.11.1),
 - \LaTeX (or, actually, xelatex) (<https://www.latex-project.org/get/>),
 - makefiles (that are native to Unix systems, but can be ported in windows using [Cygwin](https://cygwin.com/install.html))
+- the Symbola font (you can find it at <https://web.archive.org/web/20180307013123/http://users.teilar.gr/~g1951d/Symbola.zip>)^[Starting [with version 11](http://web.archive.org/web/20181228102842/http://users.teilar.gr/%7Eg1951d/Symbola.pdf), the licence is too restrictive for non-personal use.
+As a consequence, users are asked to make sure they do not use a version greater than v.10.24, which is "free for any use" and [archived on-line](http://web.archive.org/web/20180307012615/http://users.teilar.gr/~g1951d/Symbola.zip) (curious users can also refer to [the related webpage](http://web.archive.org/web/20180307012615/http://users.teilar.gr/~g1951d/)).
+Note that installing this dependency using a unix-like package manager will result in installing a version of the font that [is free to use in any context](https://metadata.ftp-master.debian.org/changelogs//main/t/ttf-ancient-fonts/ttf-ancient-fonts_2.60-1.1_copyright).]
 
 The typical file hierarchy is:
 

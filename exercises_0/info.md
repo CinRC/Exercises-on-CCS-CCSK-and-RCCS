@@ -9,7 +9,7 @@ bibliography: "bib/bib.bib"
 csl: templates/theoretical-computer-science.csl
 lang: en
 keywords:
-- Statyc Analysis
-- Compiler
-- Type theory
-- Complexity
+- pandoc
+- academic typesetting
+- research guide introduction
+- bibliography
