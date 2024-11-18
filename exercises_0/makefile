@@ -5,4 +5,3 @@ watch :
 	find main.md | entr -p -c 'make'
 
 all: main.pdf
-	pdfunite main.pdf ../short_cv/Aubert_Clement_Resume.pdf ../Application_Aubert_Clement.pdf
